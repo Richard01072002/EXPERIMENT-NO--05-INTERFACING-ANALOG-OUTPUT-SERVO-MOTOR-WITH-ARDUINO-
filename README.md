@@ -1,8 +1,8 @@
-###  DATE: 
+###  DATE: 14/03/2024
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
+###  NAME: RICHARDSON A
+###  ROLL NO : 212222233005
+###  DEPARTMENT: AI&DA
 
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
@@ -44,22 +44,18 @@ An external controller (such as the Arduino) tells the servo where to go with a 
 
 
 ### Figure-03 SERVO MOTOR OVERVIEW 
+![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
 
+
+### CIRCUIT DIAGRAM
+ ![image](https://github.com/Richard01072002/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/141472248/78274514-dd59-4cfa-bf2c-bc0993d16212)
+
+### Schematic Diagram:
+![image](https://github.com/Richard01072002/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/141472248/79431f25-7487-445e-add9-7434f60c55c3)
  
+### Graph for Serial Monitor values:
+![image](https://github.com/Richard01072002/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/141472248/d8d28257-368a-4455-9b11-d88c6a223189)
 
-
- 
-
-
-
-
-
-CIRCUIT DIAGRAM
- 
- 
- ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
-
-### FIGURE 04 CIRCUIT DIAGRAM
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -74,15 +70,36 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
- 
+```
+#include<Servo.h>
+Servo myservo;
+int pos=0;
 
+void setup()
+{
+  myservo.attach(9);
+  Serial.begin(9600);
+  Serial.print("type the angle");
+}
 
+void loop()
+{
+  for (pos=0;pos<=180;pos+=1){
+    myservo.write(pos);
+    delay(20);
+    //Serial.print("Angle = ");
+    Serial.println(pos);
+  
+  }
+  for (pos=180;pos>=0;pos-=1){
+    myservo.write(pos);
+    delay(20);
+    //Serial.print("Angle = ");
+    Serial.println(pos);
+  }
 
-
-
-
-
-
+}
+```
 
 ### RESULTS: 
 Arduino uno interfacing with servo motor is learned and angular position is controlled using PWM signal.
